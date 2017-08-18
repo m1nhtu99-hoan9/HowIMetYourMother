@@ -7,7 +7,8 @@
 		<title>reveal.js</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+		<link rel="stylesheet" href="css/style.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -22,28 +23,37 @@
 		</script>
 	</head>
 	<body>
+
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h2>Hello there!</h2>
+					<p>I have a special gift for you</p>
+				</section>
+				<section data-background-transition="zoom" data-background-image="img/136.svg">
+					<section>
+						<img id="profile" src="img/me.jpg">
+						<img id="profile" src="img/you.jpg">
+						<p>
+							Great! We have been together for <span class="highlight" id="daysDiff"></span> days
+						</p>
+						<ul style="list-style: none">
+							<li class="fragment fade-up">That time equals <span class="highlight" id="hoursDiff"></span> hours</li>
+							<li class="fragment fade-up">...or <span class="highlight" id="minutesDiff"></span> minutes</li>
+							<li class="fragment fade-up">...and nearly <span class="highlight" id="secondsDiff"></span> seconds</li>
+						</ul>
+					</section>
+					<section data-background-image="img/3061.svg" data-background-transition="slide-in fade-out">
+						<p>Remember our <span class="highlight" id="nextAnniversary"></span> days anniversary on </p>
+						<p class="fragment grow highlight" id="nextDate"></p>
+					</section>
+				</section>
 			</div>
 		</div>
 
+		
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
-
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
+		<script src="js/app.js"></script>
 	</body>
 </html>

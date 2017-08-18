@@ -49,8 +49,19 @@
 			minScale: 0.2,
 			maxScale: 2.0,
 
-			// Display controls in the bottom right corner
+			// Display presentation control arrows
 			controls: true,
+
+			// Help the user learn the controls by providing hints, for example by
+			// bouncing the down arrow when they first encounter a vertical slide
+			controlsTutorial: true,
+
+			// Determines where controls appear, "edges" or "bottom-right"
+			controlsLayout: 'bottom-right',
+
+			// Visibility rule for backwards navigation arrows; "faded", "hidden"
+			// or "visible"
+			controlsBackArrows: 'faded',
 
 			// Display a presentation progress bar
 			progress: true,
@@ -206,6 +217,10 @@
 		currentSlide,
 
 		previousBackground,
+
+		// Remember which directions that the user has navigated towards
+		hasNavigatedRight = false,
+		hasNavigatedDown = false,
 
 		// Slides may hold a data-state attribute which we pick up and apply
 		// as a class to the body. This list contains the combined state of
@@ -508,6 +523,13 @@
 		// Prevent transitions while we're loading
 		dom.slides.classList.add( 'no-transition' );
 
+		if( isMobileDevice ) {
+			dom.wrapper.classList.add( 'no-hover' );
+		}
+		else {
+			dom.wrapper.classList.remove( 'no-hover' );
+		}
+
 		// Background element
 		dom.background = createSingletonNode( dom.wrapper, 'div', 'backgrounds', null );
 
@@ -516,11 +538,11 @@
 		dom.progressbar = dom.progress.querySelector( 'span' );
 
 		// Arrow controls
-		createSingletonNode( dom.wrapper, 'aside', 'controls',
-			'<button class="navigate-left" aria-label="previous slide"></button>' +
-			'<button class="navigate-right" aria-label="next slide"></button>' +
-			'<button class="navigate-up" aria-label="above slide"></button>' +
-			'<button class="navigate-down" aria-label="below slide"></button>' );
+		dom.controls = createSingletonNode( dom.wrapper, 'aside', 'controls',
+			'<button class="navigate-left" aria-label="previous slide"><div class="controls-arrow"></div></button>' +
+			'<button class="navigate-right" aria-label="next slide"><div class="controls-arrow"></div></button>' +
+			'<button class="navigate-up" aria-label="above slide"><div class="controls-arrow"></div></button>' +
+			'<button class="navigate-down" aria-label="below slide"><div class="controls-arrow"></div></button>' );
 
 		// Slide number
 		dom.slideNumber = createSingletonNode( dom.wrapper, 'div', 'slide-number', '' );
@@ -533,9 +555,6 @@
 		// Overlay graphic which is displayed during the paused mode
 		createSingletonNode( dom.wrapper, 'div', 'pause-overlay', null );
 
-		// Cache references to elements
-		dom.controls = document.querySelector( '.reveal .controls' );
-
 		dom.wrapper.setAttribute( 'role', 'application' );
 
 		// There can be multiple instances of controls throughout the page
@@ -545,6 +564,10 @@
 		dom.controlsDown = toArray( document.querySelectorAll( '.navigate-down' ) );
 		dom.controlsPrev = toArray( document.querySelectorAll( '.navigate-prev' ) );
 		dom.controlsNext = toArray( document.querySelectorAll( '.navigate-next' ) );
+
+		// The right and down arrows in the standard reveal.js controls
+		dom.controlsRightArrow = dom.controls.querySelector( '.navigate-right' );
+		dom.controlsDownArrow = dom.controls.querySelector( '.navigate-down' );
 
 		dom.statusDiv = createStatusDiv();
 	}
@@ -789,7 +812,7 @@
 
 		// If no node was found, create it now
 		var node = document.createElement( tagname );
-		node.classList.add( classname );
+		node.className = classname;
 		if( typeof innerHTML === 'string' ) {
 			node.innerHTML = innerHTML;
 		}
@@ -1001,6 +1024,9 @@
 		dom.controls.style.display = config.controls ? 'block' : 'none';
 		dom.progress.style.display = config.progress ? 'block' : 'none';
 
+		dom.controls.setAttribute( 'data-controls-layout', config.controlsLayout );
+		dom.controls.setAttribute( 'data-controls-back-arrows', config.controlsBackArrows );
+
 		if( config.shuffle ) {
 			shuffle();
 		}
@@ -1025,11 +1051,11 @@
 		}
 
 		if( config.showNotes ) {
-			dom.speakerNotes.classList.add( 'visible' );
+			dom.wrapper.classList.add( 'show-notes' );
 			dom.speakerNotes.setAttribute( 'data-layout', typeof config.showNotes === 'string' ? config.showNotes : 'inline' );
 		}
 		else {
-			dom.speakerNotes.classList.remove( 'visible' );
+			dom.wrapper.classList.remove( 'show-notes' );
 		}
 
 		if( config.mouseWheel ) {
@@ -2732,6 +2758,22 @@
 				}
 			}
 
+			// Flag if there are ANY vertical slides, anywhere in the deck
+			if( dom.wrapper.querySelectorAll( '.slides>section>section' ).length ) {
+				dom.wrapper.classList.add( 'has-vertical-slides' );
+			}
+			else {
+				dom.wrapper.classList.remove( 'has-vertical-slides' );
+			}
+
+			// Flag if there are ANY horizontal slides, anywhere in the deck
+			if( dom.wrapper.querySelectorAll( '.slides>section:not(.stack)' ).length ) {
+				dom.wrapper.classList.add( 'has-horizontal-slides' );
+			}
+			else {
+				dom.wrapper.classList.remove( 'has-horizontal-slides' );
+			}
+
 		}
 
 	}
@@ -2746,7 +2788,7 @@
 
 		if( config.showNotes && dom.speakerNotes && currentSlide && !isPrintingPDF() ) {
 
-			dom.speakerNotes.innerHTML = getSlideNotes() || '';
+			dom.speakerNotes.innerHTML = getSlideNotes() || '<span class="notes-placeholder">No notes on this slide.</span>';
 
 		}
 
@@ -2878,6 +2920,26 @@
 			else {
 				if( fragments.prev ) dom.controlsLeft.forEach( function( el ) { el.classList.add( 'fragmented', 'enabled' ); el.removeAttribute( 'disabled' ); } );
 				if( fragments.next ) dom.controlsRight.forEach( function( el ) { el.classList.add( 'fragmented', 'enabled' ); el.removeAttribute( 'disabled' ); } );
+			}
+
+		}
+
+		if( config.controlsTutorial ) {
+
+			// Highlight control arrows with an animation to ensure
+			// that the viewer knows how to navigate
+			if( !hasNavigatedDown && routes.down ) {
+				dom.controlsDownArrow.classList.add( 'highlight' );
+			}
+			else {
+				dom.controlsDownArrow.classList.remove( 'highlight' );
+
+				if( !hasNavigatedRight && routes.right && indexv === 0 ) {
+					dom.controlsRightArrow.classList.add( 'highlight' );
+				}
+				else {
+					dom.controlsRightArrow.classList.remove( 'highlight' );
+				}
 			}
 
 		}
@@ -4134,6 +4196,8 @@
 
 	function navigateRight() {
 
+		hasNavigatedRight = true;
+
 		// Reverse for RTL
 		if( config.rtl ) {
 			if( ( isOverview() || previousFragment() === false ) && availableRoutes().right ) {
@@ -4157,6 +4221,8 @@
 	}
 
 	function navigateDown() {
+
+		hasNavigatedDown = true;
 
 		// Prioritize revealing fragments
 		if( ( isOverview() || nextFragment() === false ) && availableRoutes().down ) {
@@ -4203,6 +4269,9 @@
 	 * The reverse of #navigatePrev().
 	 */
 	function navigateNext() {
+
+		hasNavigatedRight = true;
+		hasNavigatedDown = true;
 
 		// Prioritize revealing fragments
 		if( nextFragment() === false ) {
