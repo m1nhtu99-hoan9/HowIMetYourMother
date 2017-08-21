@@ -7,8 +7,7 @@ Reveal.initialize({
   ],
   controls: true,
   progress: true,
-  defaultTiming: 60,
-  mouseWheel: true
+  defaultTiming: 60
 });
 
 function calcDuration() {
