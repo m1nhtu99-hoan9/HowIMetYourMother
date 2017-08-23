@@ -15,7 +15,7 @@ body {
   background-color: #EFEBE9; }
 
 .reveal {
-  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-family: "Pompiere", "Source Sans Pro", Helvetica, sans-serif;
   font-size: 42px;
   font-weight: normal;
   color: #795548; }
@@ -46,11 +46,10 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #795548;
-  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-family: "Bad Script", Helvetica, sans-serif;
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: normal;
-  text-transform: uppercase;
   text-shadow: none;
   word-wrap: break-word; }
 
@@ -124,6 +123,7 @@ body {
 
 .reveal q,
 .reveal blockquote {
+  font-family: Bad Script;
   quotes: none; }
 
 .reveal blockquote {
@@ -141,7 +141,7 @@ body {
   display: inline-block; }
 
 .reveal q {
-  font-style: italic; }
+  font-style: regular; }
 
 .reveal pre {
   display: block;
