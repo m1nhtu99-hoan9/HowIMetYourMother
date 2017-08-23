@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Moon Flower';
+  src: url('moon-flower.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Moon Flower';
+  src: url('moon-flower-bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: bold;
+}

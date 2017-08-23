@@ -1,131 +1,187 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>How I Met Your Mother</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/white.css">
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+	<title>How I Met Your Mother</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/white.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="img/favicon.png" type="image/x-icon">
+	<link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700" rel="stylesheet">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<div class="reveal">
-			<div class="slides">
-				<!-- Slide 1 -->
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+
+	<div class="reveal">
+		<div class="slides">
+			<!-- Slide 1 -->
+			<section>
+				<p>Kids, I'm going to tell you an <span class="highlight">incredible</span> story.</p>
+				<p class="fragment fade-up">The story of how I met your mother.</p>
+				<audio>
+					<source src="audio/HIMYM.mp3" type="audio/mpeg">
+				</audio>
+			</section>
+			<!-- Slide 2 -->
+			<section data-background-transition="zoom" data-background="#F8BBD0">
 				<section>
-					<p>Kids, I'm going to tell you an <span class="highlight">incredible</span> story.</p>
-					<p class="fragment fade-up">The story of how I met your mother.</p>
-					<audio>
-						<source src="audio/HIMYM.mp3" type="audio/mpeg">
-					</audio>
+					<img id="profile" src="img/me.jpg">
+					<img id="profile" src="img/you.jpg">
+					<p>
+						Your mother and I have been together for <span class="highlight" id="daysDiff"></span> days
+					</p>
+					<ul>
+						<li class="fragment fade-up">That time equals <span class="highlight" id="hoursDiff"></span> hours</li>
+						<li class="fragment fade-up">...or <span class="highlight" id="minutesDiff"></span> minutes</li>
+						<li class="fragment fade-up">...and nearly <span class="highlight" id="secondsDiff"></span> seconds</li>
+					</ul>
+					<p class="fragment fade-up">It's pretty cool, right?</p>
 				</section>
-				<!-- Slide 2 -->
-				<section data-background-transition="zoom" data-background="#F8BBD0">
-					<section>
-						<img id="profile" src="img/me.jpg">
-						<img id="profile" src="img/you.jpg">
-						<p>
-							Your mother and I have been together for <span class="highlight" id="daysDiff"></span> days
-						</p>
-						<ul>
-							<li class="fragment fade-up">That time equals <span class="highlight" id="hoursDiff"></span> hours</li>
-							<li class="fragment fade-up">...or <span class="highlight" id="minutesDiff"></span> minutes</li>
-							<li class="fragment fade-up">...and nearly <span class="highlight" id="secondsDiff"></span> seconds</li>
-						</ul>
-						<p class="fragment fade-up">It's pretty cool, right?</p>
-					</section>
-					<section data-background-image="img/3061.svg" data-background-transition="zoom">
-						<p class="fragment grow highlight" id="nextDate"></p>
-						<p class="fragment fade-left">will be our <span class="highlight" id="nextAnniversary"></span> days anniversary!</p>
-					</section>
+				<section data-background-image="img/3061.svg" data-background-transition="zoom">
+					<p class="fragment grow highlight" id="nextDate"></p>
+					<p class="fragment fade-left">will be our <span class="highlight" id="nextAnniversary"></span> days anniversary!</p>
+					<p class="fragment">Sorry kids, let me take you back to the start</p>
 				</section>
-				<!-- Slide 3 -->
+			</section>
+			<!-- Slide 3 -->
+			<section>
 				<section>
-					<section>
-							<ul>
-									<li>
-										It was way back in <span class="highlight">2016</span>.
-									</li>
-									<li class="fragment fade-up">
-										I was <span class="highlight">18</span>, just starting to make it as a college freshman.
-									</li>
-									<li class="fragment fade-up">
-										My life was good.
-									</li>
-									<li class="fragment fade-left">
-										And then I had a <span class="highlight">crush</span> on your mother.</span>
-									</li>
-								</ul>
-					</section>
-					<section>
-						<h4>Monday, February 8, 2016</h4>
-						<i>Your mother's birthday</i>
-					</section>
-					<section>
-						<ul>
-							<li>Your Aunt Tam posted something <span class="highlight">very long</span></li>
-							<li class="fragment">It was a <span class="highlight">birthday wish</span> for her best friend</li>
-							<li class="fragment">I don't know why but I read it carefully <span class="highlight"><span class="fragment">every</span><span class="fragment">-single</span><span class="fragment">-line</span></span></li>
-							<li class="fragment">Then I thought: <span class="fragment highlight">Wow!</span> <span class="fragment">Such a nice girl!</span> <span class="fragment">Why hasn't she had a boyfriend?</span></li>
-						</ul>
-					</section>
-					<section data-background-transition="zoom">
-						<img src="img/20160208.png" style="width: 500px; border-radius: 8px">
-						<ul>
-							<li>Do you realize that?</li>
-							<li> <span class="fragment highlight">Yup!</span> <span class="fragment">That's your mom!</span></li>
-							<li> <span class="fragment fade-up">It maybe weird but</span> <span class="fragment">this picture</span> <span class="fragment">made me</span> <span class="highlight fragment">fall in love</span> <span class="fragment">with her</span> <span class="fragment highlight">unconditionally</span></li>
-						</ul>
-					</section>
-					<section>
-						<ul>
-							<li>
-								I like the type of girl who loves <span class="highlight">reading books</span>
-							</li>
-							<li class="fragment fade-up">
-								A little smaller than me so I can feel like <span class="highlight">protecting</span> her
-							</li>
-							<li class="fragment fade-up">
-								Love cats and always saying <span class="highlight">Awwww!</span> when seeing anything cute
-							</li>
-							<li class="fragment fade-left">
-								But until now I still don't know either I love your mom because she is <span class="highlight">my type</span>...
-							</li>
-							<li class="fragment fade-left">
-								...or I love her so much that she <span class="highlight">becomes</span> my type.
-							</li>
-						</ul>
-					</section>
+					<ul>
+						<li>
+							It was way back in <span class="highlight">2016</span>.
+						</li>
+						<li class="fragment fade-up">
+							I was 19, just starting to make it as a <span class="highlight">college freshman</span>.
+						</li>
+						<li class="fragment fade-up">
+							My life was good.
+						</li>
+						<li class="fragment fade-left">
+							And then I had a <span class="highlight">crush</span> on your mother.</span>
+						</li>
+					</ul>
 				</section>
 				<section>
-					<q>You will be shocked kids, when you discover how easy it is in life to part ways with people forever.</q> 
+					<h4>Monday, February 8, 2016</h4>
+					<i>Your mother's 18th birthday</i>
+				</section>
+				<section>
+					<ul>
+						<li>Your Aunt Tam posted something <span class="highlight">very long</span></li>
+						<li class="fragment">It was a <span class="highlight">birthday wish</span> for her best friend</li>
+						<li class="fragment">I don't know why but I read it carefully <span class="highlight"><span class="fragment">every</span><span class="fragment">-single</span>
+							<span class="fragment">-line</span>
+							</span>
+						</li>
+						<li class="fragment">Then I thought: <span class="fragment highlight">Wow!</span> <span class="fragment">Such a nice girl!</span>
+							<span class="fragment">Why hasn't she had a boyfriend?</span>
+						</li>
+					</ul>
+				</section>
+				<section data-background-transition="zoom">
+					<img src="img/20160208.png" style="width: 500px; border-radius: 8px">
+					<ul>
+						<li>Do you realize that?</li>
+						<li> <span class="fragment highlight">Yup!</span> <span class="fragment">That's your mom</span><span class="fragment"> maybe 16 or 17 I don't know</span></li>
+						<li> <span class="fragment fade-up">It maybe weird but</span> <span class="fragment">this picture made me fall in love with her <span class="fragment highlight">unconditionally</span></li>
+					</ul>
+				</section>
+				<section>
+					<ul>
+						<li>
+							I like the type of girl who loves <span class="highlight">reading books</span>,
+						</li>
+						<li class="fragment fade-up">
+							A little smaller than me so I can feel like <span class="highlight">protecting</span> her,
+						</li>
+						<li class="fragment fade-up">
+							Love cats and always saying <span class="highlight">Awwww!</span> when seeing anything cute.
+						</li>
+						<li class="fragment fade-left">
+							But until now I still don't know either I love your mom because she is <span class="highlight">my type</span>...
+						</li>
+						<li class="fragment fade-left">
+							...or I love her so much that she <span class="highlight">becomes</span> my type.
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<q>You will be shocked kids, when you discover how easy it is in life to part ways with people forever.
 					</br>
-					<q class="fragment fade-up">That's why, when you find someone you want to keep around,<span class="fragment"> you do something about it.</span></q>
+					<span class="fragment fade-up">That's why, when you find someone you want to keep around,</span><span class="fragment"> you do something about it.</span>
+					</q>
 					<p class="fragment fade-up">For me, I'd stalked your mother <span class="fragment highlight">for over a year</span></p>
 				</section>
-			</div>
+				<section>
+					<ul>
+						<li>Kids, don't you laugh at me -_-</li>
+						<li class="fragment">If I flirted your mom at that time, both of you wouldn't be here listening to this incredible story</li>
+						<li class="fragment">Honestly before I came into her life, she had turned 2 billions guys down</li>
+						<li class="fragment">Yeah! Your dad was <span class="highlight">freaking out</span> too!</li>
+					</ul>
+				</section>
+				<section>
+					<ul>
+						<li>I liked your mother a lot but didn't have the guts to talk to her</li>
+						<li class="fragment">And then I moved to China to study abroad</li>
+						<li class="fragment">Thought I would get over her but I was not</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<p style="font-family: Moon Flower; font-style: bold">
+						There are two big days in any love story: </br>
+						<span class="fragment">The day you meet the girl of your dreams</span> </br>
+						<span class="fragment">& the day you marry her.</span>
+					</p>
+				</section>
+				<section>
+					<h4>Wednesday, February 8, 2017</h4>
+					<i>Your mother's 19th birthday</i>
+					</br>
+					<i>1 year of crush</i>
+				</section>
+				<section>
+					<ul>
+						<li>Don't you look at your mom's GPA and think that she is a smart person</li>
+						<li></li>
+					</ul>
+				</section>
+				<section>
+					<q>You see, the universe has a plan, <span class="fragment">and that plan is always in motion, </span>
+										<span class="fragment">just to make sure that you end up exactly where you're supposed to be, </span>
+										<span class="fragment">exactly when you're supposed to be there.</span>
+					</q>
+					<p class="fragment fade-up">The <span class="highlight">right place</span> at the <span class="highlight">right time</span> :)</p>
+				</section>
+			</section>
 		</div>
+	</div>
 
-		
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
-		<script src="js/app.js"></script>
-	</body>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+	<script src="js/app.js"></script>
+</body>
+
 </html>
