@@ -10,3 +10,16 @@
 .highlight {
   color: #B71C1C;
 }
+
+img {
+  border-radius: 8px;
+}
+
+#HIMYM {
+  width: 400px;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0);
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: -1;
+}

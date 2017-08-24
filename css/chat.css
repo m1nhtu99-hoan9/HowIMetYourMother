@@ -1,0 +1,31 @@
+.reveal .chat {
+  width: 500px;
+  font-family: 'Roboto', Times, serif;
+  font-size: 17px;
+  margin: auto;
+}
+
+.reveal .chat .bubble{
+  border-radius: 20px;
+  box-shadow: 0 0 6px #B2B2B2;
+  display: inline-block;
+  padding: 8px 10px 8px 10px;
+  position: relative;
+  vertical-align: top;
+  text-align: left;
+}
+
+.reveal .chat .you {
+  background-color: #F2F2F2;
+  float: left;   
+  margin: 5px 100px 5px 20px;   
+}
+
+.reveal .chat .me {
+  background-color: rgb(212, 168, 140);
+  color: #FFFFFF;
+  float: right;    
+  margin: 5px 20px 5px 100px;        
+}
+
+
